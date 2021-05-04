@@ -9,11 +9,22 @@
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
     <bean id="musicBean"
-          class="com.matskevich.springcource.ClassicalMusic">
-    </bean>
+          class="com.matskevich.springcource.ClassicalMusic"/>
+
+    <bean id="classicMusicBean" class="com.matskevich.springcource.ClassicalMusic"/>
+    <bean id="rockMusicBean" class="com.matskevich.springcource.RockMusic"/>
+    <bean id="popMusicBean" class="com.matskevich.springcource.PopMusic"/>
+
 
     <bean id="musicPlayer"
           class="com.matskevich.springcource.MusicPlayer">
+        <property name="musicList">
+            <list>
+                <ref bean="classicMusicBean"/>
+                <ref bean="popMusicBean"/>
+                <ref bean="rockMusicBean"/>
+            </list>
+        </property>
         <property name="music" ref="musicBean"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>

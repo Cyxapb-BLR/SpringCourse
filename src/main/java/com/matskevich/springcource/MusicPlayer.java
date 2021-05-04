@@ -1,11 +1,17 @@
 package com.matskevich.springcource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MusicPlayer {
     private Music music;
+    private List<Music> musicList = new ArrayList<>();
     private String name;
     private int volume;
+
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+    }
 
     public String getName() {
         return name;
@@ -36,5 +42,12 @@ public class MusicPlayer {
 
     public void playMusic() {
         System.out.println("Playing: " + music.getSong());
+    }
+
+    public void playMusicList() {
+        for (Music song : musicList) {
+            music = song;
+            playMusic();
+        }
     }
 }
