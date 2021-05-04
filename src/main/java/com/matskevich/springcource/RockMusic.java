@@ -1,2 +1,8 @@
-package com.matskevich.springcource;public class RockMusic {
+package com.matskevich.springcource;
+
+public class RockMusic implements Music{
+    @Override
+    public String getSong() {
+        return "Wind cries Mary";
+    }
 }
