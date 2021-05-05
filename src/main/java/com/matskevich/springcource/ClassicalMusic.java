@@ -1,9 +1,20 @@
 package com.matskevich.springcource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ClassicalMusic implements Music {
+    private List<String> musicList = new ArrayList<>();
+
+    {
+        musicList.add("Hungarian Rhapsody");
+        musicList.add("Symphony No. 5");
+        musicList.add("Serenade No. 13");
+    }
    /* private ClassicalMusic() {
     }
 
@@ -22,5 +33,9 @@ public class ClassicalMusic implements Music {
     @Override
     public String getSong() {
         return "Hungarian Rhapsody";
+    }
+
+    public List<String> getMusicList() {
+        return musicList;
     }
 }

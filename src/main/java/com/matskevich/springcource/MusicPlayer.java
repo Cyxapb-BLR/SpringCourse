@@ -4,24 +4,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 @Component
 public class MusicPlayer {
     /*@Autowired
     @Qualifier("classicalMusic")
     private Music music;*/
-    private Music music1;
-    private Music music2;
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+    // private List<String> musicList = new ArrayList<>();
 
-    @Autowired
-    public MusicPlayer(
-            @Qualifier("classicalMusic") Music music1,
-            @Qualifier("musicBean") Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
     }
 
-    public String playMusic() {
-        return "Playing: " + music1.getSong() + ". Next song : " + music2.getSong();
+    public String playMusic(MusicalGenre musicalGenre) {
+        Random random = new Random();
+        int randomNumber = random.nextInt(3);        // рандом [0-3)
+        //System.out.println(randomNumber);
+        if (musicalGenre == MusicalGenre.ROCK) {
+            return rockMusic.getMusicList().get(randomNumber);
+            // System.out.println(rockMusic.getMusicList().get(randomNumber));
+        }
+        if (musicalGenre == MusicalGenre.CLASSICAL) {
+            return classicalMusic.getMusicList().get(randomNumber);
+            // System.out.println(classicalMusic.getMusicList().get(randomNumber));
+        }
+        System.out.println("NULL");
+        return null;
         // System.out.println("Playing: " + rockMusic.getSong());
     }
     /* @Autowired
