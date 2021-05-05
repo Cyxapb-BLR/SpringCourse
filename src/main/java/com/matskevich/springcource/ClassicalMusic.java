@@ -1,7 +1,10 @@
 package com.matskevich.springcource;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ClassicalMusic implements Music {
-    private ClassicalMusic() {
+   /* private ClassicalMusic() {
     }
 
     private static ClassicalMusic getClassicalMusic() {
@@ -14,7 +17,7 @@ public class ClassicalMusic implements Music {
 
     public void doMyDestroy() {
         System.out.println("Doing my destruction");
-    }
+    }*/
 
     @Override
     public String getSong() {
