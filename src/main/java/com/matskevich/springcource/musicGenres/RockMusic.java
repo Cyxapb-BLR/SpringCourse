@@ -1,4 +1,6 @@
-package com.matskevich.springcource;
+package com.matskevich.springcource.musicGenres;
+
+import com.matskevich.springcource.Music;
 
 public class RockMusic implements Music {
     @Override

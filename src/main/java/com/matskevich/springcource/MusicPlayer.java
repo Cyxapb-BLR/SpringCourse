@@ -3,6 +3,10 @@ package com.matskevich.springcource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class MusicPlayer {
     @Value("${musicPlayer.name}")
     private String name;
@@ -20,6 +24,11 @@ public class MusicPlayer {
 
     private Music music1;
     private Music music2;
+    private List<Music> musicList = new ArrayList<>();
+
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
+    }
 
     public MusicPlayer(
             @Qualifier("classicalMusic") Music music1,
@@ -29,7 +38,9 @@ public class MusicPlayer {
     }
 
     public String playMusic() {
-        return "Playing: " + music1.getSong() + ". Next song : " + music2.getSong();
+        Random random = new Random();
+        return "Playing: " + musicList.get(random.nextInt(musicList.size())).getSong() + " with volume " + volume;
+        //return "Playing: " + music1.getSong() + ". Next song : " + music2.getSong();
         // System.out.println("Playing: " + rockMusic.getSong());
     }
     /* @Autowired

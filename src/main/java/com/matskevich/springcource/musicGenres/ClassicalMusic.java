@@ -1,4 +1,6 @@
-package com.matskevich.springcource;
+package com.matskevich.springcource.musicGenres;
+
+import com.matskevich.springcource.Music;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

@@ -1,7 +1,8 @@
 package com.matskevich.springcource;
 
+import com.matskevich.springcource.config.SpringConfig;
+import com.matskevich.springcource.musicGenres.ClassicalMusic;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpring {
     public static void main(String[] args) {
@@ -9,6 +10,8 @@ public class TestSpring {
                 SpringConfig.class
         );
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        System.out.println(musicPlayer.playMusic());
+
         System.out.println(musicPlayer.getName());
         System.out.println(musicPlayer.getVolume());
 
@@ -54,6 +57,6 @@ public class TestSpring {
         System.out.println("volume: " + musicPlayer.getVolume());
         System.out.println();
         musicPlayer.playMusicList();*/
-
+        context.close();
     }
 }
